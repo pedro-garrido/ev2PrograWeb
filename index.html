@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calcula tu bono</title>
+
+    <!-- boostrap and style -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" />
+
+    <!-- google font -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900"
+      rel="stylesheet"
+    />
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+
+    <!--jquery-->
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/script.js"></script>
+
+    <!--endimport-->
+  </head>
+  <body>
+    <div class="container main col">
+      <div class="container heading">
+        <h3>Software suPedro suGarrido</h3>
+      </div>
+
+      <div class="container">
+        <button class="btn btn-warning">Animar</button>
+        <button class="btn btn-danger">Ocultar</button>
+        <button class="btn btn-success">Mostrar</button>
+      </div>
+      <br />
+
+      <!-- calc -->
+      <div class="calc container">
+        <div class="form-heading row">
+          <h5>Formulario</h5>
+        </div>
+        <div class="form-inputs container">
+          <div class="row">
+            <div class="form-group">
+              <div class="mb-3">
+                <label for="salario"><strong>RUT</strong></label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="rut"
+                  placeholder="Ingrese RUT"
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="nombre"><strong>Nombre</strong></label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nombre"
+                  placeholder="Ingrese Nombre"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="apellido1"><strong>Primer Apellido</strong></label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="apellido"
+                  placeholder="Ingrese Apellido"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="apellido2"><strong>Segundo Apellido</strong></label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="apellido2"
+                  placeholder="Ingrese Apellido"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="correo"><strong>Correo</strong></label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="correo"
+                  placeholder="Ingrese Correo"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="htrabajadas"
+                  ><strong>Horas trabajadas</strong></label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="htrabajadas"
+                  placeholder="Ingrese Horas trabajadas"
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="nhijos"><strong>Cantidad Hijos</strong></label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="nhijos"
+                  placeholder="Ingrese Cantidad Hijos"
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="saldoafp"><strong>Saldo AFP</strong></label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="saldoafp"
+                  placeholder="Ingrese saldo AFP"
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="resultado"><strong>Bono a recibir</strong></label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="resultado"
+                  placeholder="0"
+                  disabled="true"
+                />
+              </div>
+
+              <div class="mb-3">
+                <div class="container calc-submit">
+                  <button type="submit" class="btn btn-primary">
+                    Calcular
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end calc -->
+    </div>
+  </body>
+</html>
