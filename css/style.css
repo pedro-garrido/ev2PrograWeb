@@ -23,3 +23,10 @@
    color: #FFFFFF;
    padding: 0.6em;
 }
+.input-error {
+   color: #e56c69;
+   display: none;
+}
+.focusInput {
+   border: 1px solid #ff0000;
+}

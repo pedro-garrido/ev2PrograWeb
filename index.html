@@ -24,6 +24,7 @@
     <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
 
     <!--jquery-->
+    <script src="js/sweetalert.min.js"></script>
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/script.js"></script>
 
@@ -36,117 +37,138 @@
       </div>
 
       <div class="container">
-        <button class="btn btn-warning">Animar</button>
+        <button class="btn btn-warning" id="animarBtn">Animar</button>
         <button class="btn btn-danger">Ocultar</button>
         <button class="btn btn-success">Mostrar</button>
       </div>
       <br />
 
       <!-- calc -->
-      <div class="calc container">
+      <div class="calc container" id="formContainer">
         <div class="form-heading row">
           <h5>Formulario</h5>
         </div>
         <div class="form-inputs container">
           <div class="row">
-            <div class="form-group">
-              <div class="mb-3">
-                <label for="salario"><strong>RUT</strong></label>
-                <input
-                  type="number"
-                  class="form-control"
-                  id="rut"
-                  placeholder="Ingrese RUT"
-                />
-              </div>
+            <form onsubmit="return" action="#resultado" id="formCalculadora">
+              <div class="form-group">
+                <div class="mb-3">
+                  <label for="rut"><strong>RUT</strong></label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="rut"
+                    placeholder="Ingrese RUT"
+                  />
+                  <small id="rutValidate" class="input-error"
+                    >Rut invalido</small
+                  >
+                </div>
 
-              <div class="mb-3">
-                <label for="nombre"><strong>Nombre</strong></label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="nombre"
-                  placeholder="Ingrese Nombre"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="apellido1"><strong>Primer Apellido</strong></label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="apellido"
-                  placeholder="Ingrese Apellido"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="apellido2"><strong>Segundo Apellido</strong></label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="apellido2"
-                  placeholder="Ingrese Apellido"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="correo"><strong>Correo</strong></label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="correo"
-                  placeholder="Ingrese Correo"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="htrabajadas"
-                  ><strong>Horas trabajadas</strong></label
-                >
-                <input
-                  type="number"
-                  class="form-control"
-                  id="htrabajadas"
-                  placeholder="Ingrese Horas trabajadas"
-                />
-              </div>
+                <div class="mb-3">
+                  <label for="nombre" id="nombreLabel"><strong>Nombre</strong></label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nombre"
+                    placeholder="Ingrese Nombre"
+                    pattern="[A-Za-z]"
+                  />
+                </div>
+                <small id="nombreValidate" class="input-error"
+                  ></small>
+                <div class="mb-3">
+                  <label for="apellido1"
+                    ><strong>Primer Apellido</strong></label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    pattern="[A-Za-z]"
+                    id="apellido1"
+                    placeholder="Ingrese Apellido"
+                  />
+                </div>
+                <small id="apellido1Validate" class="input-error"
+                  ></small>
+                <div class="mb-3">
+                  <label for="apellido2"
+                    ><strong>Segundo Apellido</strong></label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    pattern="[A-Za-z]"
+                    id="apellido2"
+                    placeholder="Ingrese Apellido"
+                  />
+                </div>
+                <small id="apellido2Validate" class="input-error"
+                  ></small>
+                <div class="mb-3">
+                  <label for="correo"><strong>Correo</strong></label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="correo"
+                    placeholder="Ingrese Correo"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="htrabajadas"
+                    ><strong>Horas trabajadas</strong></label
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="htrabajadas"
+                    placeholder="Ingrese Horas trabajadas"
+                  />
+                </div>
 
-              <div class="mb-3">
-                <label for="nhijos"><strong>Cantidad Hijos</strong></label>
-                <input
-                  type="number"
-                  class="form-control"
-                  id="nhijos"
-                  placeholder="Ingrese Cantidad Hijos"
-                />
-              </div>
+                <div class="mb-3">
+                  <label for="nhijos"><strong>Cantidad Hijos</strong></label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="nhijos"
+                    placeholder="Ingrese Cantidad Hijos"
+                  />
+                </div>
 
-              <div class="mb-3">
-                <label for="saldoafp"><strong>Saldo AFP</strong></label>
-                <input
-                  type="number"
-                  class="form-control"
-                  id="saldoafp"
-                  placeholder="Ingrese saldo AFP"
-                />
-              </div>
+                <div class="mb-3">
+                  <label for="saldoafp"><strong>Saldo AFP</strong></label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="saldoafp"
+                    placeholder="Ingrese saldo AFP"
+                  />
+                </div>
 
-              <div class="mb-3">
-                <label for="resultado"><strong>Bono a recibir</strong></label>
-                <input
-                  type="number"
-                  class="form-control"
-                  id="resultado"
-                  placeholder="0"
-                  disabled="true"
-                />
-              </div>
+                <div class="mb-3">
+                  <label for="resultado"><strong>Bono a recibir</strong></label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="resultado"
+                    placeholder="0"
+                    disabled="true"
+                  />
+                </div>
 
-              <div class="mb-3">
-                <div class="container calc-submit">
-                  <button type="submit" class="btn btn-primary">
-                    Calcular
-                  </button>
+                <div class="mb-3">
+                  <div class="container calc-submit">
+                    <input
+                      type="submit"
+                      class="btn btn-primary"
+                      id="calcular"
+                      value="Calcular"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
