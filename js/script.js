@@ -9,8 +9,7 @@ $(document).ready(() => {
   const reges = {
     rut: /^\d{1,2}\.\d{3}\.\d{3}[-][0-9kK]{1}$/,
     email: /^[a-zA-z-0-9]+@[a-zA-z]+.com/gm,
-    text: /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/gm,
-    number: /^[0-9]+$/gm,
+    number: /^[0-9]+$/,
   };
 
   // defino los objetos de la vista para manipular
@@ -26,6 +25,20 @@ $(document).ready(() => {
   const resultado = $("#resultado");
   const calcular = $("#calcular");
 
+
+
+// show hide h1
+
+//show btn
+$("#showBtn").click(() => {
+  $("#headingHideable").show();
+});
+$("#hideBtn").click(() => {
+  $("#headingHideable").hide();
+});
+
+  resultado.attr("readonly", true);
+
   /* animar formulario al hacer click
     agregando left 200px 
   */
@@ -33,7 +46,7 @@ $(document).ready(() => {
     $("#formCalculadora")
       .css("position", "relative")
       .animate({ left: "200px" }, 1000 * 3, () => {
-        swal("FIN", "ANIMACION", "success");
+        swal('"Pedro Garrido"', "Del estudiante", "success");
       });
   });
 
@@ -47,11 +60,11 @@ $(document).ready(() => {
   });
 
   // * CRECER LABEL FOCUSIN
-  nombre.focusin(() => {
+  $("#nombreLabel").mouseenter(() => {
     $("#nombreLabel").css("font-size", "150%");
   });
   // * RESTAURAR LABEL FOCUSOUT
-  nombre.focusout(() => {
+  $("#nombreLabel").mouseleave(() => {
     $("#nombreLabel").css("font-size", "100%");
   });
 
@@ -60,17 +73,18 @@ $(document).ready(() => {
     // VALIDO SI TODOS LOS CAMPOS ESTAN LLENOS
     // Y APRUEBAN EL REGEX
     // SI ES ASI, EL ATRIBUTO ES TRUE
+    console.log(typeof nhijos.val());
     const validacion = {
       rutTest: reges.rut.test(rut.val()) ? true : false, //regex rut test
-      nombre: reges.text.test(nombre.val()) ? true : false, //text regex
-      apellido1: reges.text.test(apellido1.val()) ? true : false, //text regex
-      apellido2: reges.text.test(apellido2.val()) ? true : false, //text regex
+      nombre: nombre.val() ? true : false , //text regex
+      apellido1: apellido1.val() ? true : false, //text regex
+      apellido2: apellido2.val() ? true : false, //text regex
       correoTest: reges.email.test(correo.val()) ? true : false, //email regex test
       htrabajadas: reges.number.test(htrabajadas.val()) ? true : false, //number regex
       nhijos: reges.number.test(nhijos.val()) ? true : false, //number regex
       saldoafp: reges.number.test(saldoafp.val()) ? true : false, //number regex
     };
-
+    console.log(validacion);
     if (
       //si hay un campo vacio
       !rut.val() ||
@@ -111,15 +125,19 @@ $(document).ready(() => {
       validacion.saldoafp
     ) {
       // calculo el bono
+
       if (htrabajadas.val() >= 40 && nhijos.val() <= 1 && saldoafp.val() == 0) {
+        //  mas de 40 horas y maximo 1 hijo y saldo afp 0
         resultado.val(pesoFormat.format(300000));
-      } else if (
+
+      } else if (//mas de 45 horas saldo afp 0 y 2 o mas hijos
         htrabajadas.val() > 45 &&
         nhijos.val() >= 2 &&
         saldoafp.val() == 0
       ) {
         resultado.val(pesoFormat.format(400000));
-      } else if (
+
+      } else if (// htrabajadas entre 41 y 44 saldo mayor a 0 y menor o igual a 500000
         htrabajadas.val() >= 41 &&
         htrabajadas.val() <= 44 &&
         nhijos.val() <= 1 &&
@@ -127,15 +145,18 @@ $(document).ready(() => {
         saldoafp.val() <= 500000
       ) {
         resultado.val(pesoFormat.format(100000));
-      } else if (
+
+      } else if ( //horas 45 y saldo mayor a 0 y menor o igual a 500000 con 2 o mas hijos
         htrabajadas.val() == 45 &&
         saldoafp.val() > 0 &&
         saldoafp.val() <= 500000 &&
         nhijos.val() >= 2
       ) {
         resultado.val(pesoFormat.format(200000));
-      } else if (saldoafp.val() > 500000) {
+
+      } else if (saldoafp.val() > 500000) {//saldo mayor a 500000
         resultado.val("No corresponde bono");
+
       } else {
         resultado.val("No corresponde bono");
       }
@@ -181,7 +202,7 @@ $(document).ready(() => {
   var rutFormat = (rut) => {
     // format rut with regex
     if (rut.match(reges.rut)) {
-      return; //if match return
+      return rut; //if match return
     } else {
       dv = rut.substr(rut.length - 1);
       rutN = rut.substr(0, rut.length - 1);

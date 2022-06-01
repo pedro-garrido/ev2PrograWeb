@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- A quien revise esto, se usar boostrap y no 
+    quise migrar y buscar en la plantilla de adminLTE
+    porque suponia un gasto de tiempo inesesario, 
+    agradezco comprension -->
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -33,13 +37,13 @@
   <body>
     <div class="container main col">
       <div class="container heading">
-        <h3>Software suPedro suGarrido</h3>
+        <h1 id="headingHideable">Software suPedro suGarrido</h1>
       </div>
 
       <div class="container">
         <button class="btn btn-warning" id="animarBtn">Animar</button>
-        <button class="btn btn-danger">Ocultar</button>
-        <button class="btn btn-success">Mostrar</button>
+        <button class="btn btn-danger" id="hideBtn">Ocultar</button>
+        <button class="btn btn-success" id="showBtn">Mostrar</button>
       </div>
       <br />
 
@@ -66,17 +70,17 @@
                 </div>
 
                 <div class="mb-3">
-                  <label for="nombre" id="nombreLabel"><strong>Nombre</strong></label>
+                  <label for="nombre" id="nombreLabel"
+                    ><strong>Nombre</strong></label
+                  >
                   <input
                     type="text"
                     class="form-control"
                     id="nombre"
                     placeholder="Ingrese Nombre"
-                    pattern="[A-Za-z]"
                   />
                 </div>
-                <small id="nombreValidate" class="input-error"
-                  ></small>
+                <small id="nombreValidate" class="input-error"></small>
                 <div class="mb-3">
                   <label for="apellido1"
                     ><strong>Primer Apellido</strong></label
@@ -84,13 +88,11 @@
                   <input
                     type="text"
                     class="form-control"
-                    pattern="[A-Za-z]"
                     id="apellido1"
                     placeholder="Ingrese Apellido"
                   />
                 </div>
-                <small id="apellido1Validate" class="input-error"
-                  ></small>
+                <small id="apellido1Validate" class="input-error"></small>
                 <div class="mb-3">
                   <label for="apellido2"
                     ><strong>Segundo Apellido</strong></label
@@ -98,13 +100,11 @@
                   <input
                     type="text"
                     class="form-control"
-                    pattern="[A-Za-z]"
                     id="apellido2"
                     placeholder="Ingrese Apellido"
                   />
                 </div>
-                <small id="apellido2Validate" class="input-error"
-                  ></small>
+                <small id="apellido2Validate" class="input-error"></small>
                 <div class="mb-3">
                   <label for="correo"><strong>Correo</strong></label>
                   <input
@@ -153,18 +153,14 @@
                     class="form-control"
                     id="resultado"
                     placeholder="0"
-                    disabled="true"
                   />
                 </div>
 
                 <div class="mb-3">
                   <div class="container calc-submit">
-                    <input
-                      type="submit"
-                      class="btn btn-primary"
-                      id="calcular"
-                      value="Calcular"
-                    />
+                    <button type="submit" class="btn btn-primary" id="calcular">
+                      Calcular</button
+                    >
                   </div>
                 </div>
               </div>
